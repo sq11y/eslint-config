@@ -1,0 +1,11 @@
+# Logs and dependencies
+pnpm-debug.log*
+node_modules
+
+# Editor directories and files
+.vscode/*
+.DS_Store
+
+# Build
+dist
+*.tsbuildinfo
