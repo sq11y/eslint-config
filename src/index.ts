@@ -41,6 +41,7 @@ const vueConfig = [
       "vue/define-emits-declaration": ["error", "type-based"],
       "vue/require-prop-comment": "error",
       "vue/block-order": ["error", { order: [["template", "script[setup]", "style"]] }],
+      "vue/no-boolean-default": ["error", "default-false"],
 
       "sq11y/require-emit-comment": "error",
       "sq11y/require-slot-comment": "error",
