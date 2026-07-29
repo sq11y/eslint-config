@@ -112,7 +112,9 @@ const config = (isVueProject?: boolean) => [
       "@typescript-eslint/consistent-type-imports": ["error"],
       "@typescript-eslint/unbound-method": "off",
       "@typescript-eslint/restrict-template-expressions": "off",
-      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+
+      /* prettier-ignore */
+      "@typescript-eslint/no-unused-vars": ["error", { destructuredArrayIgnorePattern: "^_", argsIgnorePattern: "^_" }],
       "@typescript-eslint/no-empty-object-type": "off",
       "@typescript-eslint/no-redundant-type-constituents": "off",
       "@typescript-eslint/no-unnecessary-type-parameters": "off",
