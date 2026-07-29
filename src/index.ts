@@ -17,6 +17,22 @@ import tslint from "typescript-eslint";
 import requireComment from "./require-comment.js";
 import isVueProject from "./is-vue-project.js";
 
+const tsConfig = [
+  {
+    name: "sq11y/ts",
+    files: ["**/*.{ts,js}"],
+    extends: [jslint.configs.recommended, ...tslint.configs.recommendedTypeChecked],
+
+    languageOptions: {
+      parserOptions: {
+        projectService: {
+          allowDefaultProject: ["*.js"],
+        },
+      },
+    },
+  },
+];
+
 const vueConfig = [
   ...pluginVue.configs["flat/recommended"],
   ...pluginVueA11y.configs["flat/recommended"],
@@ -29,7 +45,6 @@ const vueConfig = [
 
     plugins: {
       sq11y: {
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */
         rules: requireComment,
       },
     },
@@ -53,14 +68,12 @@ const config = (isVueProject?: boolean) => [
   globalIgnores(["**/dist/**", "**/node_modules/**", "**/.cache/**", ".git"]),
 
   pluginStylistic.configs.recommended,
-  jslint.configs.recommended,
 
   jsdoc({ config: "flat/recommended" }),
 
-  ...tslint.configs.recommendedTypeChecked,
   ...pluginOxlint.buildFromOxlintConfigFile(".oxlintrc.json"),
 
-  ...(isVueProject ? vueConfig : []),
+  ...(isVueProject ? vueConfig : tsConfig),
 
   skipFormatting,
 
@@ -100,5 +113,5 @@ const config = (isVueProject?: boolean) => [
 
 export default isVueProject
   ? defineConfigWithVueTs(...config(true))
-  : /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-explicit-any */
+  : /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
     defineConfig(...(config(false) as any[]));
