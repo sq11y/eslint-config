@@ -23,7 +23,7 @@ const requireCommentRule = (
     },
 
     messages: {
-      default: `The ${prop} "{{ name }}" should have a JSDoc comment`,
+      default: `The ${prop} "{{ name }}" should have a JSDoc comment.`,
     },
   },
 
