@@ -63,6 +63,10 @@ const vueConfig = [
       "vue/block-order": ["error", { order: [["template", "script[setup]", "style"]] }],
       "vue/no-boolean-default": ["error", "default-false"],
 
+      "vue/max-attributes-per-line": "off",
+      "vue/html-self-closing": "off",
+      "vue/singleline-html-element-content-newline": "off",
+
       "sq11y/require-emit-comment": "error",
       "sq11y/require-slot-comment": "error",
       "sq11y/consistent-svg-imports": "error",
