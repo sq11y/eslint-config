@@ -65,6 +65,7 @@ const vueConfig = [
       "sq11y/require-emit-comment": "error",
       "sq11y/require-slot-comment": "error",
       "sq11y/consistent-svg-imports": "error",
+      "sq11y/svg-labels": "error",
     } satisfies Linter.RulesRecord,
   },
 ];
