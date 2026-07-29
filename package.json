@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-sq11y",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "My ESLint config.",
   "keywords": [
     "eslint",
