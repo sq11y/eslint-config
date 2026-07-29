@@ -15,6 +15,7 @@ import jslint from "@eslint/js";
 import tslint from "typescript-eslint";
 
 import requireComment from "./require-comment.js";
+import svgs from "./svgs.js";
 import isVueProject from "./is-vue-project.js";
 
 const tsConfig = [
@@ -45,7 +46,10 @@ const vueConfig = [
 
     plugins: {
       sq11y: {
-        rules: requireComment,
+        rules: {
+          ...requireComment,
+          ...svgs,
+        },
       },
     },
 
@@ -60,6 +64,7 @@ const vueConfig = [
 
       "sq11y/require-emit-comment": "error",
       "sq11y/require-slot-comment": "error",
+      "sq11y/consistent-svg-imports": "error",
     } satisfies Linter.RulesRecord,
   },
 ];
