@@ -22,7 +22,7 @@ const tsConfig = [
   {
     name: "sq11y/ts",
     files: ["**/*.{ts,js}"],
-    extends: [jslint.configs.recommended, ...tslint.configs.recommendedTypeChecked],
+    extends: [jslint.configs.recommended, ...tslint.configs.strictTypeChecked],
 
     languageOptions: {
       parserOptions: {
@@ -35,10 +35,10 @@ const tsConfig = [
 ];
 
 const vueConfig = [
-  ...pluginVue.configs["flat/recommended"],
+  ...pluginVue.configs["flat/recommended-error"],
   ...pluginVueA11y.configs["flat/recommended"],
 
-  vueTsConfigs.recommendedTypeChecked,
+  vueTsConfigs.strictTypeChecked,
 
   {
     name: "sq11y/vue",
@@ -46,6 +46,7 @@ const vueConfig = [
 
     plugins: {
       sq11y: {
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */
         rules: {
           ...requireComment,
           ...svgs,
@@ -73,15 +74,16 @@ const vueConfig = [
 const config = (isVueProject?: boolean) => [
   globalIgnores(["**/dist/**", "**/node_modules/**", "**/.cache/**", ".git"]),
 
-  pluginStylistic.configs.recommended,
-
   jsdoc({ config: "flat/recommended" }),
 
   ...pluginOxlint.buildFromOxlintConfigFile(".oxlintrc.json"),
 
-  ...(isVueProject ? vueConfig : tsConfig),
-
+  pluginStylistic.configs.recommended,
   skipFormatting,
+
+  tsConfig,
+
+  ...(isVueProject ? vueConfig : []),
 
   {
     name: "sq11y/shared",
@@ -101,10 +103,10 @@ const config = (isVueProject?: boolean) => [
       "no-duplicate-case": "error",
       "no-useless-assignment": "off",
 
+      "@stylistic/spaced-comment": "error",
+
       "@typescript-eslint/consistent-type-imports": ["error"],
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
-
-      "@stylistic/spaced-comment": "error",
       "@typescript-eslint/unbound-method": "off",
       "@typescript-eslint/no-empty-object-type": "off",
       "@typescript-eslint/no-redundant-type-constituents": "off",
@@ -119,5 +121,5 @@ const config = (isVueProject?: boolean) => [
 
 export default isVueProject
   ? defineConfigWithVueTs(...config(true))
-  : /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  : /* eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument */
     defineConfig(...(config(false) as any[]));
