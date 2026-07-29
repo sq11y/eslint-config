@@ -120,6 +120,7 @@ const config = (isVueProject?: boolean) => [
       "@typescript-eslint/no-unnecessary-type-parameters": "off",
       "@typescript-eslint/no-non-null-assertion": "off",
       "@typescript-eslint/no-confusing-void-expression": "off",
+      "@typescript-eslint/no-floating-promises": "off",
 
       "jsdoc/tag-lines": "off",
       "jsdoc/require-param": "off",
