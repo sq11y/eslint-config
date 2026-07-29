@@ -110,10 +110,14 @@ const config = (isVueProject?: boolean) => [
       "@stylistic/spaced-comment": "error",
 
       "@typescript-eslint/consistent-type-imports": ["error"],
-      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
       "@typescript-eslint/unbound-method": "off",
+      "@typescript-eslint/restrict-template-expressions": "off",
+      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
       "@typescript-eslint/no-empty-object-type": "off",
       "@typescript-eslint/no-redundant-type-constituents": "off",
+      "@typescript-eslint/no-unnecessary-type-parameters": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/no-confusing-void-expression": "off",
 
       "jsdoc/tag-lines": "off",
       "jsdoc/require-param": "off",
