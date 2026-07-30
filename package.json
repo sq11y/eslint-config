@@ -25,29 +25,29 @@
   "dependencies": {
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
-    "@typescript-eslint/utils": "^8.62.0",
-    "@vue/eslint-config-typescript": "^14.8.0",
+    "@typescript-eslint/utils": "^8.65.0",
+    "@vue/eslint-config-typescript": "^14.9.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-jsdoc": "^63.0.10",
-    "eslint-plugin-oxlint": "~1.69.0",
-    "eslint-plugin-vue": "~10.9.2",
+    "eslint-plugin-jsdoc": "^63.3.2",
+    "eslint-plugin-oxlint": "~1.76.0",
+    "eslint-plugin-vue": "~10.10.0",
     "eslint-plugin-vuejs-accessibility": "^2.5.0",
-    "typescript-eslint": "^8.62.0"
+    "typescript-eslint": "^8.65.0"
   },
   "devDependencies": {
     "@tsconfig/node24": "^24.0.4",
-    "@types/node": "^26.0.1",
-    "eslint": "^10.5.0",
+    "@types/node": "^24.13.3",
+    "eslint": "catalog:",
     "jiti": "^2.7.0",
-    "oxfmt": "^0.56.0",
-    "oxlint": "^1.71.0",
-    "typescript": "^6.0.3"
+    "oxfmt": "catalog:",
+    "oxlint": "catalog:",
+    "typescript": "catalog:"
   },
   "peerDependencies": {
-    "eslint": "^10.5.0",
-    "oxfmt": "^0.56.0",
-    "oxlint": "^1.71.0",
-    "typescript": "^6.0.3"
+    "eslint": "catalog:",
+    "oxfmt": "catalog:",
+    "oxlint": "catalog:",
+    "typescript": "catalog:"
   },
   "engines": {
     "node": ">=24.18.0"

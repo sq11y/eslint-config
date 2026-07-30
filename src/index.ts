@@ -1,6 +1,6 @@
 import type { Linter } from "eslint";
 
-import { defineConfig, globalIgnores } from "eslint/config";
+import { defineConfig, globalIgnores, type ConfigObject } from "eslint/config";
 import { defineConfigWithVueTs, vueTsConfigs } from "@vue/eslint-config-typescript";
 
 import { jsdoc } from "eslint-plugin-jsdoc";
@@ -22,6 +22,8 @@ const tsConfig = [
   {
     name: "sq11y/ts",
     files: ["**/*.{ts,js}"],
+
+    /* @ts-expect-error temporary to enforce types */
     extends: [jslint.configs.recommended, ...tslint.configs.strictTypeChecked],
 
     languageOptions: {
@@ -31,7 +33,7 @@ const tsConfig = [
         },
       },
     },
-  },
+  } satisfies Linter.Config,
 ];
 
 const vueConfig = [
@@ -71,8 +73,8 @@ const vueConfig = [
       "sq11y/require-slot-comment": "error",
       "sq11y/consistent-svg-imports": "error",
       "sq11y/svg-labels": "error",
-    } satisfies Linter.RulesRecord,
-  },
+    },
+  } satisfies Linter.Config,
 ];
 
 const config = (isVueProject?: boolean) => [
@@ -126,11 +128,10 @@ const config = (isVueProject?: boolean) => [
       "jsdoc/require-param": "off",
       "jsdoc/require-returns": "off",
       "jsdoc/check-tag-names": "off",
-    } satisfies Linter.RulesRecord,
-  },
+    },
+  } satisfies ConfigObject,
 ];
 
 export default isVueProject
-  ? defineConfigWithVueTs(...config(true))
-  : /* eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument */
-    defineConfig(...(config(false) as any[]));
+  ? (defineConfigWithVueTs(...config(true)) as unknown as ConfigObject[])
+  : defineConfig(...(config(false) as unknown as ConfigObject[]));
